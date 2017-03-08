@@ -1,8 +1,7 @@
 
 
 
-
-Function Node (value) {
+function Node(value) {
     this.data = value;
     this.previous = null;
     this.next = null;
@@ -15,7 +14,7 @@ function DoublyList() {
 }
 
 DoublyList.prototype.add = function(value) {
-    var node = new Node(value);
+    let node = new Node(value);
 
     if (this._length) {
         this.tail.next = node;
@@ -32,7 +31,7 @@ DoublyList.prototype.add = function(value) {
 };
 
 DoublyList.prototype.searchNodeAt = function(position) {
-    var currentNode = this.head,
+    let currentNode = this.head,
         length = this._length,
         count = 1,
         message = {failure: 'Failure: non-existent node in this list.'};
@@ -52,7 +51,7 @@ DoublyList.prototype.searchNodeAt = function(position) {
 };
 
 DoublyList.prototype.remove = function(position) {
-    var currentNode = this.head,
+    let currentNode = this.head,
         length = this._length,
         count = 1,
         message = {failure: 'Failure: non-existent node in this list.'},
@@ -102,3 +101,7 @@ DoublyList.prototype.remove = function(position) {
 
     return message.success;
 };
+
+
+var a = DoublyList.add(1);
+console.log(a._length);
