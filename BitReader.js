@@ -9,7 +9,7 @@ arayBit.reverse();            //инвертируем массив символ
 for(let i = 0; i < arayBit.length; i++){ //в цикле перебираетм масив символов
 
 if (arayBit[i] == 1 || arayBit[i] == 0){} //проверяем на наличие символов 1 или 0 и ничего не делаем
-else{return undefined;}                   //выбрасывае  ошибку undefined 
+else{return undefined;}                   //выбрасывае  ошибку undefined при наличии левого симола. 
 }
 
 return parseInt(source, 2).toString(); //Самый простой способ
