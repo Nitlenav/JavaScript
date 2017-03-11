@@ -1,26 +1,30 @@
-
+"use strict";
 
 
 function Node(value) {
-    this.data = value;
-    this.previous = null;
-    this.next = null;
+    this.data = value;       //данные
+    this.next = null;        //указатель на следующий узел 
+    this.previous = null;    //указатель на предыдущий узел
+              
 }
 
 function DoublyList() {
-    this._length = 0;
-    this.head = null;
-    this.tail = null;
+    this._length = 0;       //колличество узлов
+    this.head = null;       //указатель на головной элемент в списке
+    this.tail = null;       //указатель на конечный элемент в списке
 }
 
-DoublyList.prototype.add = function(value) {
+DoublyList.prototype = {
+    
+add : function(value) {
     let node = new Node(value);
 
     if (this._length) {
         this.tail.next = node;
         node.previous = this.tail;
         this.tail = node;
-    } else {
+    } 
+    else {
         this.head = node;
         this.tail = node;
     }
@@ -28,29 +32,29 @@ DoublyList.prototype.add = function(value) {
     this._length++;
 
     return node;
-};
+},
 
-DoublyList.prototype.searchNodeAt = function(position) {
+searchNodeAt : function(position) {
     let currentNode = this.head,
         length = this._length,
         count = 1,
-        message = {failure: 'Failure: non-existent node in this list.'};
+        message = {failure: 'Не существующий узел в данном списке ;('}; //сообщение о ошибке
 
-    // 1-ый случай: неверная позиция
-    if (length === 0 || position < 1 || position > length) {
-        throw new Error(message.failure);
+
+    if (length === 0 || position < 1 || position > length) {     // 1-ый случай: неверная позиция
+        throw new Error(message.failure);                        // при выполнении условия выводим ошибку
     }
 
-    // 2-ой случай: верная позиция
-    while (count < position) {
+    
+    while (count < position) {                                   // 2-ой случай: верная позиция
         currentNode = currentNode.next;
         count++;
     }
 
     return currentNode;
-};
+},
 
-DoublyList.prototype.remove = function(position) {
+remove : function(position) {
     let currentNode = this.head,
         length = this._length,
         count = 1,
@@ -100,8 +104,13 @@ DoublyList.prototype.remove = function(position) {
     this._length--;
 
     return message.success;
+}
 };
 
 
-var a = DoublyList.add(1);
-console.log(a._length);
+let a =  new DoublyList();
+a.add(10);
+a.add(20);
+a.add(30);
+console.log(a.searchNodeAt(2));
+
