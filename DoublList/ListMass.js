@@ -18,7 +18,6 @@ DoublyList.prototype = {
     
 add : function(value) {
     let node = new Node(value);
-
     if (this._length) {
         this.tail.next = node;
         node.previous = this.tail;
@@ -28,9 +27,7 @@ add : function(value) {
         this.head = node;
         this.tail = node;
     }
-
     this._length++;
-
     return node;
 },
 
@@ -63,34 +60,25 @@ remove : function(position) {
         nodeToDelete = null,
         deletedNode = null;
 
-    // 1-ый случай: неверная позиция
-    if (length === 0 || position < 1 || position > length) {
+
+    if (length === 0 || position < 1 || position > length) {      // 1-ый случай: неверная позиция
         throw new Error(message.failure);
     }
-
-    // 2-ой случай: первый узел удален
-    if (position === 1) {
+    if (position === 1) {                                         // 2-ой случай: первый узел удален
         this.head = currentNode.next;
-
-        // 2-ой случай: существует второй узел
-        if (!this.head) {
+        if (!this.head) {                                         // 2-ой случай: существует второй узел
             this.head.previous = null;
-        // 2-ой случай: второго узла не существует
-        } else {
+        } else {                                                  // 2-ой случай: второго узла не существует
             this.tail = null;
         }
-
-    // 3-ий случай: последний узел удален
-    } else if (position === this._length) {
+    } else if (position === this._length) {                       // 3-ий случай: последний узел удален
         this.tail = this.tail.previous;
         this.tail.next = null;
-    // 4-ый случай: средний узел удален
-    } else {
+    } else {                                                      // 4-ый случай: средний узел удален
         while (count < position) {
             currentNode = currentNode.next;
             count++;
         }
-
         beforeNodeToDelete = currentNode.previous;
         nodeToDelete = currentNode;
         afterNodeToDelete = currentNode.next;
@@ -100,17 +88,38 @@ remove : function(position) {
         deletedNode = nodeToDelete;
         nodeToDelete = null;
     }
-
     this._length--;
-
     return message.success;
 }
 };
 
 
-let a =  new DoublyList();
-a.add(10);
-a.add(20);
-a.add(30);
-console.log(a.searchNodeAt(2));
+let a = new DoublyList(); let b = new DoublyList();
+let c = new DoublyList();
+a.add(1); b.add(2);
+a.add(3); b.add(4);
+a.add(5); b.add(6);
+a.add(7); b.add(8);
+//console.log(a._length, b._length);
+if (a._length = b._length){
+    for (let i = 1; i <= a._length; i++){
+                        console.log(c.add(a.searchNodeAt(i).Node.data  ));
+                        console.log(c._length)
+        /*if ((a.searchNodeAt(i).data + b.searchNodeAt(i).data) > 10){
+                c.add(a.searchNodeAt(i).data + b.searchNodeAt(i).data);
+
+        }
+        else{
+                let num = (a.searchNodeAt(i).data + b.searchNodeAt(i).data);
+                console.log(num);
+                let mass = num.split('');
+                c.add(mass[mass.length - 1]);
+                for(let j = 0; j < mass.length - 2; j++){
+                    b.searchNodeAt(i).data + mass[j];
+                }
+        }
+        */
+    }
+}
+console.log(c._length)
 
