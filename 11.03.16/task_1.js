@@ -12,7 +12,7 @@ function readString(value){
         counrStr += a[i];
         let str = new RegExp(counrStr, "g");
         let num = value.match(str).length
-        if ( num >= count && counrStr.length > strin.length){
+        if ( num >= count && counrStr.length > strin.length && (counrStr.length * num == a.length)){
             count = num;
             strin = counrStr;
         }
@@ -22,3 +22,4 @@ console.log('Строка ' + strin + ' встречается '+ count + ' ра
 }
 
  readString('abcabcabcabc');
+
