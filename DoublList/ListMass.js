@@ -41,13 +41,11 @@ searchNodeAt : function(position) {
     if (length === 0 || position < 1 || position > length) {     // 1-ый случай: неверная позиция
         throw new Error(message.failure);                        // при выполнении условия выводим ошибку
     }
-
     
     while (count < position) {                                   // 2-ой случай: верная позиция
         currentNode = currentNode.next;
         count++;
     }
-
     return currentNode;
 },
 
@@ -55,7 +53,7 @@ remove : function(position) {
     let currentNode = this.head,
         length = this._length,
         count = 1,
-        message = {failure: 'Failure: non-existent node in this list.'},
+        message = {failure: 'Данная позиция отсутствует'},
         beforeNodeToDelete = null,
         nodeToDelete = null,
         deletedNode = null;
@@ -90,36 +88,39 @@ remove : function(position) {
     }
     this._length--;
     return message.success;
+},
+
+associatioList : function (list_1, list_2){
+    let a = new String();
+    let b = new String();
+    let mass = [];
+    //let c = new DoublyList();
+    for(let i = 1; i <= list_1._length; i++){
+        let str1 = list_1.searchNodeAt(i).data;
+        let str2 = list_2.searchNodeAt(i).data;
+        let num = str1 + str2;
+        mass.push(num.toString());
+    }
+for(let a = 0; a < mass.length; a++){
+    if (+mass[a] >= 10){
+        mass[a + 1] = +mass[a + 1] + ((+mass[a] - mass[a] % 10) / 10); 
+        mass[a] = (mass[a] % 10).toString();
+                console.log(mass[a + 1]);
+    }
 }
+    console.log(mass);
+}
+
 };
 
 
 let a = new DoublyList(); let b = new DoublyList();
-let c = new DoublyList();
 a.add(1); b.add(2);
 a.add(3); b.add(4);
 a.add(5); b.add(6);
 a.add(7); b.add(8);
-//console.log(a._length, b._length);
-if (a._length = b._length){
-    for (let i = 1; i <= a._length; i++){
-                        console.log(c.add(a.searchNodeAt(i).Node.data  ));
-                        console.log(c._length)
-        /*if ((a.searchNodeAt(i).data + b.searchNodeAt(i).data) > 10){
-                c.add(a.searchNodeAt(i).data + b.searchNodeAt(i).data);
-
-        }
-        else{
-                let num = (a.searchNodeAt(i).data + b.searchNodeAt(i).data);
-                console.log(num);
-                let mass = num.split('');
-                c.add(mass[mass.length - 1]);
-                for(let j = 0; j < mass.length - 2; j++){
-                    b.searchNodeAt(i).data + mass[j];
-                }
-        }
-        */
-    }
-}
-console.log(c._length)
+console.log("Список а = "+ a._length, " Список b = " + b._length);
+//console.log(a.searchNodeAt(1).data);
+let c = new DoublyList();
+c.associatioList(a, b);
 
