@@ -94,23 +94,32 @@ associatioList : function (list_1, list_2){
     let a = new String();
     let b = new String();
     let mass = [];
-    //let c = new DoublyList();
+    let d = new DoublyList();
     for(let i = 1; i <= list_1._length; i++){
         let str1 = list_1.searchNodeAt(i).data;
         let str2 = list_2.searchNodeAt(i).data;
         let num = str1 + str2;
         mass.push(num.toString());
     }
+    console.log ("Массив "+ mass);
 for(let a = 0; a < mass.length; a++){
     if (+mass[a] >= 10){
-        mass[a + 1] = +mass[a + 1] + ((+mass[a] - mass[a] % 10) / 10); 
-        mass[a] = (mass[a] % 10).toString();
-                console.log(mass[a + 1]);
+        let numMass = +mass[a];
+        let numMassMax = +mass[a + 1];
+          mass[a] = (numMass % 10).toString();
+        if (isNaN(numMassMax)){ 
+        let a = (numMass - numMass % 10) / 10;
+        mass.push(a); 
+    }else {
+                mass[a + 1] =  numMassMax + ((numMass - numMass % 10) / 10); 
+    }
     }
 }
-    console.log(mass);
+    for(let a = 0; a < mass.length; a++){
+d.add(+mass[a]);
+console.log (mass[a]);
+    }
 }
-
 };
 
 
