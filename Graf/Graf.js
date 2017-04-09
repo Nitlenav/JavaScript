@@ -33,8 +33,6 @@ throw new Error(message.failure);
         masGraf.set(top, masValueMap.push[rev])
         console.log(masGraf)
     }
-
-   
 }*/
  masGraf.set(top, masVal.push[rev])
 }
