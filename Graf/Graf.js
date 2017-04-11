@@ -42,8 +42,6 @@ throw new Error(message.failure);
 }
 
 
-		
-
 let graf = new Graf ([[0,2], [2,6], [0,3] ]);
 
 //graf.dfs(graf.nodes[0]);
